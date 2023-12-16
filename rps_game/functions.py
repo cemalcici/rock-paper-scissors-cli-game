@@ -28,7 +28,7 @@ def decide_who_win_game(
         (user == 1 and computer == 0)
     ):
         return 'You win!'
-    elif user == user:
+    elif user == computer:
         return 'Draw'
     return 'You lose'
 
