@@ -5,8 +5,8 @@ import random
 from .functions import control_user_input, decide_who_win_game, draw_rps_art
 
 if __name__ == '__main__':
-    isExist = False
-    while not isExist:
+    isExit = False
+    while not isExit:
         usr_input = input(
             "What do you choose? " +\
             "Type 0 for Rock, 1 for Paper or 2 for Scissors " +\
