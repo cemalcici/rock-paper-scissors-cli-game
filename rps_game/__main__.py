@@ -1,5 +1,9 @@
+# Global packages
 import random
 from typing import Literal
+
+# Local packages
+from .arts import ROCK, PAPER, SCISSORS
 
 def decide_who_win_game(
     user: Literal[0, 1, 2],
@@ -54,10 +58,27 @@ def control_user_input(
         raise ValueError('The value must be numeric only.')
 
 
+def draw_rps_art(
+    choice: Literal[0, 1, 2]
+) -> str:
+    """Function that generates a rock paper scissors ASCII art corresponding to the value selected by the user or the computer.
+
+    Args:
+        choice (Literal[0, 1, 2]): Selected value. The value must be 0, 1 and 2.
+
+    Returns:
+        str: ASCII art
+    """
+    return [ROCK, PAPER, SCISSORS][choice]
+
 user_choice = control_user_input(
     input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors\n")
 )
 computer_choice = random.randint(0, 2)
-print(f"Computer choice: {computer_choice}")
+
+print('Your choice:')
+print(draw_rps_art(user_choice))
+print(f"Computer choice:")
+print(draw_rps_art(computer_choice))
 
 print(decide_who_win_game(user_choice, computer_choice))
