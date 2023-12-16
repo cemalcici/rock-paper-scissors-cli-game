@@ -16,7 +16,13 @@ if __name__ == '__main__':
             print('Thanks for playing!')
             break
         
-        user_choice = control_user_input(usr_input)
+        try:
+            user_choice = control_user_input(usr_input)
+        except ValueError as e:
+            print(e)
+            print("Try again")
+            continue
+        
         computer_choice = random.randint(0, 2)
 
         print('Your choice:')
