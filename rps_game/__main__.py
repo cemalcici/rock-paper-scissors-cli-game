@@ -71,14 +71,23 @@ def draw_rps_art(
     """
     return [ROCK, PAPER, SCISSORS][choice]
 
-user_choice = control_user_input(
-    input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors\n")
-)
-computer_choice = random.randint(0, 2)
+if __name__ == '__main__':
+    isExist = False
+    while not isExist:
+        usr_input = input(
+            "What do you choose? " +\
+            "Type 0 for Rock, 1 for Paper or 2 for Scissors " +\
+            "(Press 'q' to exit)\n"
+        )
+        if usr_input.lower() == 'q':
+            print('Thanks for playing!')
+            break
+        
+        user_choice = control_user_input(usr_input)
+        computer_choice = random.randint(0, 2)
 
-print('Your choice:')
-print(draw_rps_art(user_choice))
-print(f"Computer choice:")
-print(draw_rps_art(computer_choice))
-
-print(decide_who_win_game(user_choice, computer_choice))
+        print('Your choice:')
+        print(draw_rps_art(user_choice))
+        print(f"Computer choice:")
+        print(draw_rps_art(computer_choice))
+        print(decide_who_win_game(user_choice, computer_choice))
