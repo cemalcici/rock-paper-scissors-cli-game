@@ -29,7 +29,34 @@ def decide_who_win_game(
         return 'Draw'
     return 'You lose'
 
-user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors\n"))
+
+def control_user_input(
+    user_input: str
+) -> int:
+    """Function that validates the number received from the user.
+
+    Args:
+        user_input (str): The value entered by the user.
+
+    Raises:
+        ValueError: Error printing when the value is not numeric.
+        ValueError: Error where the value is not between 0 and 2.
+
+    Returns:
+        int: _description_
+    """
+    if user_input.isdecimal():
+        if 0 <= int(user_input) <= 2:
+            return int(user_input)
+        else:
+            raise ValueError('The value must only be 0, 1 and 2')
+    else:
+        raise ValueError('The value must be numeric only.')
+
+
+user_choice = control_user_input(
+    input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors\n")
+)
 computer_choice = random.randint(0, 2)
 print(f"Computer choice: {computer_choice}")
 
